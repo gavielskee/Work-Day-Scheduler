@@ -21,7 +21,10 @@ $(document).ready(function () {
     localStorage.setItem(hour, text)
   })
 
-
+  for(var i = 9; i <= 17; i++) {
+    $(`#hour-${i} textarea`).val(localStorage.getItem(`hour-${i}`))
+  }
+  
   setInterval(function () {
     $('#currentDay').text(dayjs().format('dddd, MMMM D YYYY, h:mm:ss a'));
   }, 1000)
