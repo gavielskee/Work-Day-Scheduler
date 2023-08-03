@@ -1,9 +1,6 @@
 $(document).ready(function () {
-  setInterval(function () {
-    $('#currentDay').text(dayjs().format('dddd, MMMM D YYYY, h:mm:ss a'));
-  }, 1000)
-
   var timeBlock = $(".time-block")
+  var saveBtn = $(".saveBtn")
   var currentHour = dayjs().hour();
 
   timeBlock.each(function () {
@@ -17,7 +14,15 @@ $(document).ready(function () {
     }
   })
 
+  saveBtn.on("click", function() {
+    var hour = $(this).parent().attr("id");
+    var text = $(this).siblings(".description").val();
+
+    localStorage.setItem(hour, text)
+  })
 
 
-
+  setInterval(function () {
+    $('#currentDay').text(dayjs().format('dddd, MMMM D YYYY, h:mm:ss a'));
+  }, 1000)
 });
